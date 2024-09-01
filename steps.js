@@ -19,3 +19,4 @@ PASSO 6: Implementar gerenciamento de estado utilizando React (ou Context API).
 PASSO 7: Implementar rotas com React Router (opcional, mas recomendado).
 
 
+*/
