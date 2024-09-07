@@ -1,18 +1,14 @@
 import { Exclude } from "class-transformer";
-import { UUID } from "crypto";
 import { Task } from "src/task/entities/task.entity";
-import { Column,PrimaryGeneratedColumn,Entity, OneToMany } from "typeorm";
+import { Column, PrimaryGeneratedColumn, Entity, OneToMany } from "typeorm";
 
-
-
-@Entity({name: "users"})
+@Entity({ name: "users" })
 export class User {
-
   @PrimaryGeneratedColumn("uuid")
-  id: UUID;
+  id: string;  // Use string ao invés de UUID
 
   @Column()
-  name : string;
+  name: string;
 
   @Column()
   email: string;
@@ -22,6 +18,5 @@ export class User {
   password: string;
 
   @OneToMany(type => Task, task => task.user)
-  task? : Task[]
-
+  task?: Task[];  // Relacionamento com a entidade Task
 }

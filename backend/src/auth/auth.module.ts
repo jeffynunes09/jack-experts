@@ -7,11 +7,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/user/entities/user.entity';
 import { UserService } from 'src/user/user.service';
+import { TaskModule } from 'src/task/task.module';
+import { TaskService } from 'src/task/task.service';
+import { Task } from 'src/task/entities/task.entity';
 
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([User,Task]),
     JwtModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
@@ -22,7 +25,7 @@ import { UserService } from 'src/user/user.service';
     }),
     forwardRef(() => UserModule), 
   ],
-  providers: [AuthService,UserService],
+  providers: [AuthService,UserService,TaskService],
   controllers: [AuthController],
   exports: [AuthService],
 })
